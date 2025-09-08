@@ -6,10 +6,11 @@ export default {
   providers: [Google],
   pages: {
     signIn: "/signin",
+    verifyRequest: "/verify-request",
   },
   callbacks: {
     authorized: async ({ auth, request }) => {
-      if (!auth) NextResponse.redirect(new URL("/signin", request.url));
+      if (!auth) return NextResponse.redirect(new URL("/signin", request.url));
 
       return !!auth;
     },
