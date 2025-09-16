@@ -4,6 +4,7 @@ import {
   IconCamera,
   IconChartBar,
   IconDashboard,
+  IconTax,
   IconDatabase,
   IconFileAi,
   IconFileDescription,
@@ -16,12 +17,14 @@ import {
   IconSearch,
   IconSettings,
   IconUsers,
+  IconBuildingBank
 } from "@tabler/icons-react";
-import { NavDocuments } from "@/components/nav-documents";
-import { NavMain } from "@/components/nav-main";
-import { NavSecondary } from "@/components/nav-secondary";
-import { NavUser } from "@/components/nav-user";
+import { NavDocuments } from "@/components/layout/dashboard/nav-documents";
+import { NavMain } from "@/components/layout/dashboard/nav-main";
+import { NavSecondary } from "@/components/layout/dashboard/nav-secondary";
+import { NavUser } from "@/components/layout/dashboard/nav-user";
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
+import Link from "next/link";
 
 const data = {
   // user: {
@@ -31,29 +34,19 @@ const data = {
   // },
   navMain: [
     {
-      title: "Dashboard",
-      url: "/dashboard/dashboard",
-      icon: IconDashboard,
+      title: "Overview",
+      url: "/dashboard/overview",
+      icon: IconTax,
     },
     {
-      title: "Lifecycle",
-      url: "/dashboard/lifecycle",
-      icon: IconListDetails,
+      title: "Bank Accounts",
+      url: "/dashboard/bank-accounts",
+      icon: IconBuildingBank,
     },
     {
       title: "Analytics",
       url: "/dashboard/analytics",
       icon: IconChartBar,
-    },
-    {
-      title: "Projects",
-      url: "/dashboard/projects",
-      icon: IconFolder,
-    },
-    {
-      title: "Team",
-      url: "/dashboard/team",
-      icon: IconUsers,
     },
   ],
   // navClouds: [
@@ -156,10 +149,10 @@ export function AppSidebar({
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:!p-1.5">
-              <a href="#">
+              <Link href="/dashboard">
                 {/* <IconInnerShadowTop className="!size-5" /> */}
                 <span className="text-base font-semibold">Pennywise</span>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

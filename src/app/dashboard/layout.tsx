@@ -1,6 +1,6 @@
 import { auth } from "@/lib/auth";
-import { AppSidebar } from "@/components/layout/app-sidebar";
-import { SiteHeader } from "@/components/layout/site-header";
+import { AppSidebar } from "@/components/layout/dashboard/app-sidebar";
+import { SiteHeader } from "@/components/layout/dashboard/site-header";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 export default async function DashboardLayout({ children }: Readonly<{ children: React.ReactNode }>) {
