@@ -1,5 +1,7 @@
 "use client";
 import * as React from "react";
+import Link from "next/link";
+import Image from "next/image";
 import {
   IconCamera,
   IconChartBar,
@@ -17,14 +19,14 @@ import {
   IconSearch,
   IconSettings,
   IconUsers,
-  IconBuildingBank
+  IconBuildingBank,
 } from "@tabler/icons-react";
 import { NavDocuments } from "@/components/layout/dashboard/nav-documents";
 import { NavMain } from "@/components/layout/dashboard/nav-main";
 import { NavSecondary } from "@/components/layout/dashboard/nav-secondary";
 import { NavUser } from "@/components/layout/dashboard/nav-user";
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
-import Link from "next/link";
+import AppIcon from "@/app/icon.svg";
 
 const data = {
   // user: {
@@ -151,6 +153,7 @@ export function AppSidebar({
             <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:!p-1.5">
               <Link href="/dashboard">
                 {/* <IconInnerShadowTop className="!size-5" /> */}
+                <Image src={AppIcon} width={20} height={20} alt="icon" className="!size-5" />
                 <span className="text-base font-semibold">Pennywise</span>
               </Link>
             </SidebarMenuButton>

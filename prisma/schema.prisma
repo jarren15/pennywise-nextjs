@@ -5,21 +5,22 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-} 
+}
 
 model User {
-  id            String          @id @default(cuid())
+  id            String    @id @default(cuid())
   name          String?
-  email         String          @unique
+  email         String    @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
+  items         Item[]
   // sessions      Session[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
- 
+
 model Account {
   userId            String
   type              String
@@ -35,26 +36,38 @@ model Account {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
- 
+
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
+
   @@id([provider, providerAccountId])
 }
- 
+
 // model Session {
 //   sessionToken String   @unique
 //   userId       String
 //   expires      DateTime
 //   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
+
 //   createdAt DateTime @default(now())
 //   updatedAt DateTime @updatedAt
 // }
- 
+
 model VerificationToken {
   identifier String
   token      String
   expires    DateTime
- 
+
   @@id([identifier, token])
+}
+
+model Item {
+  itemId      String @id @unique
+  userId      String
+  accessToken String
+  requestId   String @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
